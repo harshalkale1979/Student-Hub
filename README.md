@@ -2,7 +2,6 @@
 
 A free, all-in-one dashboard for polytechnic and engineering students. Built as static HTML/CSS/JS — no build tools, no server, no signup required.
 
-**Live demo:** deploy this with GitHub Pages (see `pages/about.html` in the site itself for a step-by-step guide).
 
 ## Features
 
@@ -33,26 +32,7 @@ student-hub/
     └── about.html               → help + GitHub Pages setup guide
 ```
 
-## Running locally
 
-Just open `index.html` in a browser — no installation needed. For the best experience (so relative links and localStorage behave consistently), you can also serve it with any static server, e.g.:
-
-```bash
-npx serve .
-```
-
-## Deploying to GitHub Pages
-
-See the in-app guide at `pages/about.html`, or:
-
-1. Push this folder to a new GitHub repository.
-2. In the repo, go to **Settings → Pages**.
-3. Set source to **Deploy from a branch**, branch `main`, folder `/ (root)`.
-4. Your site will be live at `https://yourusername.github.io/repo-name/`.
-
-## Customizing
-
-- **Colors & fonts:** edit the `:root` variables at the top of `assets/css/theme.css`.
 - **Grade scale:** edit the `gradePoints` object in `pages/gpa-calculator.html`.
 - **Video topics:** edit the `subjects` array in `pages/resources.html`.
 
