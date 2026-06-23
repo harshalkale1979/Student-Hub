@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Library — Student Hub</title>
+<meta name="description" content="Curated YouTube search links for core engineering and polytechnic subjects, organized by topic.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%235B6CFF%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .subject-block { margin-bottom: 36px; }
+  .subject-block h3 { display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:1.05rem; }
+  .subject-block h3 .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 7.5v6c0 1 4 3.5 9 3.5s9-2.5 9-3.5v-6"/></svg></div>
+      <div class="brand-name">Student Hub<span>Engineering &amp; Polytechnic</span></div>
+    </div>
+    <nav>
+      <div class="nav-group-label">Overview</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Tools</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="gpa-calculator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>GPA Calculator</a></li>
+        <li><a class="nav-link" href="attendance-tracker.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Attendance Tracker</a></li>
+        <li><a class="nav-link" href="study-planner.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Study Planner</a></li>
+        <li><a class="nav-link" href="notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Notes</a></li>
+        <li><a class="nav-link" href="timetable-generator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>Timetable Generator</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Learn</div>
+      <ul class="nav-list">
+        <li><a class="nav-link active" href="resources.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Video Library</a></li>
+        <li><a class="nav-link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About &amp; Help</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="about.html">How this works &rarr;</a>
+      <span>&copy; 2026 Student Hub</span>
+    </div>
+  </aside>
+
+  <div>
+    <div class="mobile-topbar">
+      <button class="menu-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+      <div class="brand-name" style="font-size:0.95rem;">Student Hub</div>
+      <div style="width:38px;"></div>
+    </div>
+
+    <main class="main-content">
+
+      <section class="page-head fade-up">
+        <div>
+          <span class="eyebrow">Video Library</span>
+          <h1>Learn the topics, not just the marks</h1>
+          <p>Each card opens a pre-filled YouTube search for that exact topic, so you land on fresh, relevant lessons instead of one fixed (and possibly outdated) video. Pick whichever explainer matches how you learn best.</p>
+        </div>
+      </section>
+
+      <div class="field" style="max-width:320px; margin-bottom:30px;">
+        <label for="video-search">Search any topic</label>
+        <input type="text" id="video-search" placeholder="e.g. Laplace transform, OOPs in Java...">
+      </div>
+
+      <div id="subject-blocks"></div>
+
+      <div class="page-footer">
+        <span>Video Library — part of Student Hub.</span>
+        <a href="about.html" style="color:var(--indigo);">Next: how Student Hub works &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script>
+  const subjects = [
+    {
+      name: 'Mathematics',
+      color: '#5B6CFF',
+      topics: ['Laplace transform basics', 'Fourier series explained', 'Differential equations engineering', 'Matrices and linear algebra basics', 'Probability and statistics for engineers']
+    },
+    {
+      name: 'Electronics & Circuits',
+      color: '#FFB648',
+      topics: ['Digital electronics logic gates', 'Kirchhoff\'s voltage and current law', 'Semiconductor diode working', 'Operational amplifier basics', 'Microprocessor 8085 architecture']
+    },
+    {
+      name: 'Mechanical Engineering',
+      color: '#FF6B6B',
+      topics: ['Thermodynamics laws explained', 'Strength of materials basics', 'Fluid mechanics fundamentals', 'Theory of machines gear trains', 'Engineering drawing orthographic projection']
+    },
+    {
+      name: 'Computer Science',
+      color: '#3DDC97',
+      topics: ['Data structures and algorithms full course', 'Object oriented programming concepts', 'DBMS normalization explained', 'Operating system process scheduling', 'Computer networks OSI model']
+    },
+    {
+      name: 'Civil Engineering',
+      color: '#5B6CFF',
+      topics: ['Surveying basics for civil engineering', 'Reinforced concrete design basics', 'Building materials and construction', 'Soil mechanics fundamentals']
+    },
+    {
+      name: 'Exam Skills',
+      color: '#FFB648',
+      topics: ['How to write engineering exam answers', 'Last minute revision strategy', 'Viva voce preparation tips', 'Time management during exams']
+    }
+  ];
+
+  function ytLink(query) {
+    return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query);
+  }
+
+  function renderBlocks(filterTerm = '') {
+    const container = document.getElementById('subject-blocks');
+    container.innerHTML = '';
+    const term = filterTerm.toLowerCase();
+
+    subjects.forEach(subj => {
+      const topics = term ? subj.topics.filter(t => t.toLowerCase().includes(term) || subj.name.toLowerCase().includes(term)) : subj.topics;
+      if (!topics.length) return;
+
+      const block = document.createElement('div');
+      block.className = 'subject-block';
+      block.innerHTML = `
+        <h3><span class="dot" style="background:${subj.color}"></span>${subj.name}</h3>
+        <div class="grid grid-2" data-topics></div>
+      `;
+      const grid = block.querySelector('[data-topics]');
+      topics.forEach(topic => {
+        const a = document.createElement('a');
+        a.className = 'video-card';
+        a.href = ytLink(topic);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = `
+          <div class="video-thumb" style="background:linear-gradient(135deg, ${subj.color}33, #1f2a4d);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div>
+            <div class="vtitle">${topic.charAt(0).toUpperCase() + topic.slice(1)}</div>
+            <div class="vchannel">Search on YouTube &rarr;</div>
+          </div>
+        `;
+        grid.appendChild(a);
+      });
+      container.appendChild(block);
+    });
+
+    if (!container.children.length) {
+      container.innerHTML = '<div class="empty-state"><p>No topics match your search. Try a different keyword.</p></div>';
+    }
+  }
+
+  document.getElementById('video-search').addEventListener('input', (e) => renderBlocks(e.target.value));
+  renderBlocks();
+</script>
+</body>
+</html>

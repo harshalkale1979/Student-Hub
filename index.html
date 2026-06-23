@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Hub — Your Engineering Dashboard</title>
+<meta name="description" content="Student Hub: GPA calculator, attendance tracker, study planner, notes, and timetable generator for polytechnic and engineering students.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%235B6CFF%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 7.5v6c0 1 4 3.5 9 3.5s9-2.5 9-3.5v-6"/></svg>
+      </div>
+      <div class="brand-name">Student Hub<span>Engineering &amp; Polytechnic</span></div>
+    </div>
+
+    <nav>
+      <div class="nav-group-label">Overview</div>
+      <ul class="nav-list">
+        <li><a class="nav-link active" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a></li>
+      </ul>
+    </nav>
+
+    <nav>
+      <div class="nav-group-label">Tools</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="pages/gpa-calculator.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          GPA Calculator
+        </a></li>
+        <li><a class="nav-link" href="pages/attendance-tracker.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Attendance Tracker
+        </a></li>
+        <li><a class="nav-link" href="pages/study-planner.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Study Planner
+        </a></li>
+        <li><a class="nav-link" href="pages/notes.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+          Notes
+        </a></li>
+        <li><a class="nav-link" href="pages/timetable-generator.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>
+          Timetable Generator
+        </a></li>
+      </ul>
+    </nav>
+
+    <nav>
+      <div class="nav-group-label">Learn</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="pages/resources.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Video Library
+        </a></li>
+        <li><a class="nav-link" href="pages/about.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          About &amp; Help
+        </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="pages/about.html">How this works &rarr;</a>
+      <span>&copy; 2026 Student Hub</span>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div>
+    <div class="mobile-topbar">
+      <button class="menu-toggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <div class="brand-name" style="font-size:0.95rem;">Student Hub</div>
+      <div style="width:38px;"></div>
+    </div>
+
+    <main class="main-content">
+
+      <!-- HERO -->
+      <section class="page-head fade-up">
+        <div>
+          <span class="eyebrow">Welcome back</span>
+          <h1>Everything your semester needs,<br>in one calm dashboard.</h1>
+          <p>Student Hub brings your GPA, attendance, timetable, notes, and study plan into a single connected workspace built for polytechnic and engineering coursework — no spreadsheets, no sticky notes, no chaos.</p>
+          <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
+            <a href="pages/gpa-calculator.html" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              Calculate my GPA
+            </a>
+            <a href="pages/timetable-generator.html" class="btn btn-ghost">Build my timetable</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE STAT STRIP -->
+      <section class="grid grid-4 fade-up" style="animation-delay:.05s;">
+        <div class="stat-tile accent-indigo">
+          <span class="num mono" id="stat-gpa">--</span>
+          <span class="label">Current CGPA</span>
+        </div>
+        <div class="stat-tile accent-mint">
+          <span class="num mono" id="stat-attendance">--%</span>
+          <span class="label">Attendance</span>
+        </div>
+        <div class="stat-tile accent-amber">
+          <span class="num mono" id="stat-tasks">0</span>
+          <span class="label">Tasks pending</span>
+        </div>
+        <div class="stat-tile accent-coral">
+          <span class="num mono" id="stat-notes">0</span>
+          <span class="label">Saved notes</span>
+        </div>
+      </section>
+
+      <!-- TOOLS GRID -->
+      <div class="section-head">
+        <h2>Your tools</h2>
+        <span class="view-all">5 connected modules</span>
+      </div>
+
+      <section class="grid grid-3">
+
+        <a class="tool-card fade-up" href="pages/gpa-calculator.html" style="animation-delay:.08s;">
+          <div class="icon-box icon-indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3>GPA Calculator</h3>
+          <p>Add subjects, credits, and grades to compute your SGPA per semester and a running CGPA — with a live grade-points table.</p>
+          <span class="go-link">Open calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="tool-card fade-up" href="pages/attendance-tracker.html" style="animation-delay:.12s;">
+          <div class="icon-box icon-mint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Attendance Tracker</h3>
+          <p>Log attended vs total classes per subject and instantly see how many lectures you can safely miss before dropping below 75%.</p>
+          <span class="go-link">Track attendance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="tool-card fade-up" href="pages/study-planner.html" style="animation-delay:.16s;">
+          <div class="icon-box icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <h3>Study Planner</h3>
+          <p>Plan tasks by subject and due date, set priority, and track completion with a running progress ring for the week.</p>
+          <span class="go-link">Plan my week <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="tool-card fade-up" href="pages/notes.html" style="animation-delay:.2s;">
+          <div class="icon-box icon-coral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+          </div>
+          <h3>Notes</h3>
+          <p>Quick subject-tagged notes that save automatically in your browser — searchable, color-coded, and ready before exams.</p>
+          <span class="go-link">Write a note <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="tool-card fade-up" href="pages/timetable-generator.html" style="animation-delay:.24s;">
+          <div class="icon-box icon-indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>
+          </div>
+          <h3>Timetable Generator</h3>
+          <p>Drop in your weekly lecture slots and generate a clean, printable timetable grid you can keep open all semester.</p>
+          <span class="go-link">Build timetable <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="tool-card fade-up" href="pages/resources.html" style="animation-delay:.28s;">
+          <div class="icon-box icon-mint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h3>Video Library</h3>
+          <p>Curated YouTube playlists for core engineering subjects — circuits, thermodynamics, DSA, and more — linked by topic.</p>
+          <span class="go-link">Browse videos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+      </section>
+
+      <!-- HOW IT CONNECTS -->
+      <div class="section-head">
+        <h2>How it all connects</h2>
+      </div>
+      <div class="card">
+        <div class="grid grid-3" style="gap:28px;">
+          <div>
+            <div class="icon-box icon-indigo" style="margin-bottom:10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <h3 style="font-size:1rem; margin-bottom:6px;">1. Track the numbers</h3>
+            <p style="color:var(--text-dim); font-size:0.85rem; line-height:1.6;">Your GPA and attendance live on this dashboard the moment you save them in their tools — no copying between pages.</p>
+          </div>
+          <div>
+            <div class="icon-box icon-amber" style="margin-bottom:10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <h3 style="font-size:1rem; margin-bottom:6px;">2. Plan around your timetable</h3>
+            <p style="color:var(--text-dim); font-size:0.85rem; line-height:1.6;">The Study Planner and Timetable Generator share the same subject list, so your tasks line up with real class slots.</p>
+          </div>
+          <div>
+            <div class="icon-box icon-coral" style="margin-bottom:10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+            </div>
+            <h3 style="font-size:1rem; margin-bottom:6px;">3. Revise with notes &amp; videos</h3>
+            <p style="color:var(--text-dim); font-size:0.85rem; line-height:1.6;">Tag notes by subject, then jump to matching video lessons in the library when a topic needs more explanation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Student Hub — built for polytechnic &amp; engineering students.</span>
+        <span>All data stays in your browser. Nothing is uploaded anywhere.</span>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/shell.js"></script>
+<script>
+  // Pull live stats from localStorage written by the other tools
+  (function () {
+    const gpaData = StudentHubStore.get('gpa_semesters', []);
+    const attendanceData = StudentHubStore.get('attendance_subjects', []);
+    const tasks = StudentHubStore.get('planner_tasks', []);
+    const notes = StudentHubStore.get('notes', []);
+
+    // CGPA across saved semesters
+    if (gpaData.length) {
+      let totalPoints = 0, totalCredits = 0;
+      gpaData.forEach(sem => {
+        totalPoints += sem.gradePoints || 0;
+        totalCredits += sem.credits || 0;
+      });
+      const cgpa = totalCredits ? (totalPoints / totalCredits).toFixed(2) : '--';
+      document.getElementById('stat-gpa').textContent = cgpa;
+    }
+
+    // Attendance average
+    if (attendanceData.length) {
+      let totalAttended = 0, totalClasses = 0;
+      attendanceData.forEach(s => {
+        totalAttended += Number(s.attended) || 0;
+        totalClasses += Number(s.total) || 0;
+      });
+      const pct = totalClasses ? Math.round((totalAttended / totalClasses) * 100) : 0;
+      document.getElementById('stat-attendance').textContent = pct + '%';
+    }
+
+    // Pending tasks
+    const pending = tasks.filter(t => !t.done).length;
+    document.getElementById('stat-tasks').textContent = pending;
+
+    // Notes count
+    document.getElementById('stat-notes').textContent = notes.length;
+  })();
+</script>
+</body>
+</html>

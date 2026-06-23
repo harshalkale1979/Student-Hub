@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable Generator — Student Hub</title>
+<meta name="description" content="Build a clean, printable weekly timetable from your lecture slots.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%235B6CFF%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .tt-grid { display: grid; grid-template-columns: 90px repeat(6, 1fr); gap: 6px; min-width: 760px; }
+  .tt-cell { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; min-height: 64px; font-size: 0.72rem; }
+  .tt-head { background: transparent; border: none; font-weight: 600; font-size: 0.78rem; color: var(--text-dim); text-align: center; padding: 6px 0; }
+  .tt-time { background: transparent; border: none; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); display:flex; align-items:center; justify-content:center; }
+  .tt-slot { border-left: 3px solid var(--indigo); border-radius: 6px; padding: 6px 8px; font-size: 0.74rem; }
+  .tt-slot .s-name { font-weight: 600; }
+  .tt-slot .s-room { color: var(--text-faint); font-size: 0.68rem; margin-top:2px; }
+  .entry-row { display: grid; grid-template-columns: 1.4fr 1fr 0.9fr 0.9fr 0.9fr 42px; gap: 10px; align-items: end; margin-bottom: 12px; }
+  @media (max-width: 900px) { .entry-row { grid-template-columns: 1fr 1fr; } }
+  @media print {
+    .sidebar, .mobile-topbar, .card:not(.tt-print), .page-head p, .section-head, #entry-form-card, .page-footer { display: none !important; }
+    body { background: white; color: black; }
+    .tt-cell, .tt-slot { border-color: #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 7.5v6c0 1 4 3.5 9 3.5s9-2.5 9-3.5v-6"/></svg></div>
+      <div class="brand-name">Student Hub<span>Engineering &amp; Polytechnic</span></div>
+    </div>
+    <nav>
+      <div class="nav-group-label">Overview</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Tools</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="gpa-calculator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>GPA Calculator</a></li>
+        <li><a class="nav-link" href="attendance-tracker.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Attendance Tracker</a></li>
+        <li><a class="nav-link" href="study-planner.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Study Planner</a></li>
+        <li><a class="nav-link" href="notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Notes</a></li>
+        <li><a class="nav-link" href="timetable-generator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>Timetable Generator</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Learn</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="resources.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Video Library</a></li>
+        <li><a class="nav-link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About &amp; Help</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="about.html">How this works &rarr;</a>
+      <span>&copy; 2026 Student Hub</span>
+    </div>
+  </aside>
+
+  <div>
+    <div class="mobile-topbar">
+      <button class="menu-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+      <div class="brand-name" style="font-size:0.95rem;">Student Hub</div>
+      <div style="width:38px;"></div>
+    </div>
+
+    <main class="main-content">
+
+      <section class="page-head fade-up">
+        <div>
+          <span class="eyebrow">Schedule Tool</span>
+          <h1>Timetable Generator</h1>
+          <p>Add your lecture slots once — subject, day, time, and room — and Student Hub lays them out into a clean weekly grid you can keep open in a tab or print for your desk.</p>
+        </div>
+        <button class="btn btn-ghost" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print timetable
+        </button>
+      </section>
+
+      <div class="card" id="entry-form-card">
+        <h3 style="margin-bottom:16px;">Add a class slot</h3>
+        <div class="entry-row" style="font-size:0.74rem; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em;">
+          <span>Subject</span><span>Day</span><span>Start</span><span>End</span><span>Room (optional)</span><span></span>
+        </div>
+        <div class="entry-row">
+          <input type="text" id="slot-subject" placeholder="e.g. Digital Electronics">
+          <select id="slot-day">
+            <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+            <option>Thursday</option><option>Friday</option><option>Saturday</option>
+          </select>
+          <input type="time" id="slot-start" value="09:00">
+          <input type="time" id="slot-end" value="10:00">
+          <input type="text" id="slot-room" placeholder="e.g. Lab 2">
+          <button class="btn-icon" id="add-slot-btn" aria-label="Add slot" style="color:var(--mint); background:rgba(61,220,151,0.12); border-color:rgba(61,220,151,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>Your weekly timetable</h2>
+        <button class="chip" id="clear-all-btn">Clear all slots</button>
+      </div>
+
+      <div class="card tt-print" style="overflow-x:auto;">
+        <div class="tt-grid" id="tt-grid"></div>
+      </div>
+
+      <div class="section-head"><h2>Building a balanced schedule</h2></div>
+      <div class="grid grid-2">
+        <div class="card card-sm">
+          <h3 style="font-size:0.95rem; margin-bottom:8px;">Leave buffer time</h3>
+          <p style="font-size:0.85rem; color:var(--text-dim); line-height:1.6;">Try to leave at least one free slot between heavy lab sessions and theory classes — it gives you room to review notes right after a lecture, when recall is highest.</p>
+        </div>
+        <a class="video-card" href="https://www.youtube.com/results?search_query=how+to+make+a+study+timetable+for+exams" target="_blank" rel="noopener">
+          <div class="video-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div>
+            <div class="vtitle">How to build an exam study timetable</div>
+            <div class="vchannel">Search on YouTube &rarr;</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="page-footer">
+        <span>Timetable Generator — part of Student Hub.</span>
+        <a href="resources.html" style="color:var(--indigo);">Next: browse the video library &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script>
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const gridEl = document.getElementById('tt-grid');
+  let slots = StudentHubStore.get('timetable_slots', []);
+
+  function timeToMinutes(t) {
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function buildHourRange() {
+    if (!slots.length) return Array.from({length: 9}, (_, i) => 8 + i); // default 8am-4pm
+    let min = Math.min(...slots.map(s => timeToMinutes(s.start)));
+    let max = Math.max(...slots.map(s => timeToMinutes(s.end)));
+    let startHour = Math.floor(min / 60);
+    let endHour = Math.ceil(max / 60);
+    if (endHour - startHour < 6) endHour = startHour + 6;
+    return Array.from({length: endHour - startHour}, (_, i) => startHour + i);
+  }
+
+  function renderGrid() {
+    gridEl.innerHTML = '';
+    const hours = buildHourRange();
+
+    // Header row
+    gridEl.appendChild(makeCell('', 'tt-head'));
+    days.forEach(d => gridEl.appendChild(makeCell(d, 'tt-head')));
+
+    hours.forEach(h => {
+      const label = (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? ' AM' : ' PM');
+      gridEl.appendChild(makeCell(label, 'tt-time'));
+      days.forEach(day => {
+        const cell = document.createElement('div');
+        cell.className = 'tt-cell';
+        const matches = slots.filter(s => s.day === day && timeToMinutes(s.start) >= h * 60 && timeToMinutes(s.start) < (h + 1) * 60);
+        matches.forEach(s => {
+          const slotDiv = document.createElement('div');
+          slotDiv.className = 'tt-slot';
+          slotDiv.innerHTML = `<div class="s-name">${escapeHtml(s.subject)}</div><div class="s-room">${s.start}–${s.end}${s.room ? ' · ' + escapeHtml(s.room) : ''}</div>`;
+          cell.appendChild(slotDiv);
+        });
+        gridEl.appendChild(cell);
+      });
+    });
+
+    gridEl.style.gridTemplateRows = `auto repeat(${hours.length}, minmax(64px, auto))`;
+  }
+
+  function makeCell(text, cls) {
+    const d = document.createElement('div');
+    d.className = cls;
+    d.textContent = text;
+    return d;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function save() { StudentHubStore.set('timetable_slots', slots); }
+
+  document.getElementById('add-slot-btn').addEventListener('click', () => {
+    const subject = document.getElementById('slot-subject').value.trim();
+    const day = document.getElementById('slot-day').value;
+    const start = document.getElementById('slot-start').value;
+    const end = document.getElementById('slot-end').value;
+    const room = document.getElementById('slot-room').value.trim();
+    if (!subject || !start || !end) { alert('Please fill in subject, start, and end time.'); return; }
+    if (timeToMinutes(end) <= timeToMinutes(start)) { alert('End time must be after start time.'); return; }
+    slots.push({ subject, day, start, end, room });
+    save(); renderGrid();
+    document.getElementById('slot-subject').value = '';
+    document.getElementById('slot-room').value = '';
+  });
+
+  document.getElementById('clear-all-btn').addEventListener('click', () => {
+    if (confirm('Remove all timetable slots?')) { slots = []; save(); renderGrid(); }
+  });
+
+  renderGrid();
+</script>
+</body>
+</html>

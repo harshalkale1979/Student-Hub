@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Tracker — Student Hub</title>
+<meta name="description" content="Track attendance per subject and see how many classes you can miss while staying above the minimum requirement.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%235B6CFF%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .subj-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px; display: grid; grid-template-columns: 1fr 90px 110px 110px 90px 42px; gap: 14px; align-items: center; margin-bottom: 12px; }
+  .subj-card .mini-ring { justify-self: center; }
+  @media (max-width: 900px) { .subj-card { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 7.5v6c0 1 4 3.5 9 3.5s9-2.5 9-3.5v-6"/></svg></div>
+      <div class="brand-name">Student Hub<span>Engineering &amp; Polytechnic</span></div>
+    </div>
+    <nav>
+      <div class="nav-group-label">Overview</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Tools</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="gpa-calculator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>GPA Calculator</a></li>
+        <li><a class="nav-link" href="attendance-tracker.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Attendance Tracker</a></li>
+        <li><a class="nav-link" href="study-planner.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Study Planner</a></li>
+        <li><a class="nav-link" href="notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Notes</a></li>
+        <li><a class="nav-link" href="timetable-generator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>Timetable Generator</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Learn</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="resources.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Video Library</a></li>
+        <li><a class="nav-link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About &amp; Help</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="about.html">How this works &rarr;</a>
+      <span>&copy; 2026 Student Hub</span>
+    </div>
+  </aside>
+
+  <div>
+    <div class="mobile-topbar">
+      <button class="menu-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+      <div class="brand-name" style="font-size:0.95rem;">Student Hub</div>
+      <div style="width:38px;"></div>
+    </div>
+
+    <main class="main-content">
+
+      <section class="page-head fade-up">
+        <div>
+          <span class="eyebrow">Attendance Tool</span>
+          <h1>Attendance Tracker</h1>
+          <p>Most polytechnic and engineering programs require at least 75% attendance to sit for exams. Add each subject below and Student Hub tells you exactly how many classes you can still miss — or need to attend — to stay safe.</p>
+        </div>
+        <div class="field" style="min-width:160px;">
+          <label for="min-required">Minimum required %</label>
+          <input type="number" id="min-required" value="75" min="0" max="100">
+        </div>
+      </section>
+
+      <div class="grid grid-3" style="margin-bottom:30px;">
+        <div class="stat-tile accent-mint">
+          <span class="num mono" id="overall-pct">0%</span>
+          <span class="label">Overall attendance</span>
+        </div>
+        <div class="stat-tile accent-indigo">
+          <span class="num mono" id="subject-count">0</span>
+          <span class="label">Subjects tracked</span>
+        </div>
+        <div class="stat-tile accent-coral">
+          <span class="num mono" id="at-risk-count">0</span>
+          <span class="label">Subjects below minimum</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:16px;">Subjects</h3>
+
+        <div class="subj-card" style="background:transparent; border:none; padding:0 18px; font-size:0.72rem; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">
+          <span>Subject</span><span>Attended</span><span>Total classes</span><span>Status</span><span>Safe to miss</span><span></span>
+        </div>
+
+        <div id="attendance-rows"></div>
+
+        <button class="btn btn-ghost btn-sm" id="add-attendance-row" style="margin-top:8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add subject
+        </button>
+      </div>
+
+      <div class="section-head"><h2>Why attendance matters</h2></div>
+      <div class="grid grid-2">
+        <div class="card card-sm">
+          <h3 style="font-size:0.95rem; margin-bottom:8px;">The 75% rule</h3>
+          <p style="font-size:0.85rem; color:var(--text-dim); line-height:1.6;">Falling below your institute's minimum attendance can mean detention from exams regardless of your marks. Tracking weekly, instead of checking right before exams, gives you time to course-correct.</p>
+        </div>
+        <a class="video-card" href="https://www.youtube.com/results?search_query=how+attendance+percentage+is+calculated+college" target="_blank" rel="noopener">
+          <div class="video-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div>
+            <div class="vtitle">How attendance percentage works</div>
+            <div class="vchannel">Search on YouTube &rarr;</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="page-footer">
+        <span>Attendance Tracker — part of Student Hub.</span>
+        <a href="study-planner.html" style="color:var(--indigo);">Next: plan your study week &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script>
+  const rowsContainer = document.getElementById('attendance-rows');
+
+  function calcSafeToMiss(attended, total, minPct) {
+    // How many more classes can be missed (assuming total grows) while staying >= minPct
+    // Formula: find max future misses 'x' such that attended/(total+x) >= minPct/100
+    // attended >= (minPct/100) * (total + x)  =>  x <= attended*100/minPct - total
+    if (minPct <= 0) return Infinity;
+    const maxFutureTotal = Math.floor((attended * 100) / minPct);
+    return maxFutureTotal - total;
+  }
+
+  function classesNeededToRecover(attended, total, minPct) {
+    // How many consecutive classes attended needed to reach minPct if currently below
+    // (attended + x) / (total + x) >= minPct/100
+    let x = 0;
+    while (((attended + x) / (total + x || 1)) * 100 < minPct && x < 1000) x++;
+    return x;
+  }
+
+  function renderRow(data = { name: '', attended: '', total: '' }) {
+    const row = document.createElement('div');
+    row.className = 'subj-card';
+    row.innerHTML = `
+      <input type="text" placeholder="e.g. Thermodynamics" class="a-name" value="${data.name}">
+      <input type="number" placeholder="0" min="0" class="a-attended" value="${data.attended}">
+      <input type="number" placeholder="0" min="0" class="a-total" value="${data.total}">
+      <span class="pill a-status">--</span>
+      <span class="mono a-safe" style="font-size:0.85rem; text-align:center;">--</span>
+      <button class="btn-icon remove-row" aria-label="Remove subject" style="color:var(--coral); background:rgba(255,107,107,0.12); border-color:rgba(255,107,107,0.3);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    `;
+    function update() {
+      const attended = parseFloat(row.querySelector('.a-attended').value) || 0;
+      const total = parseFloat(row.querySelector('.a-total').value) || 0;
+      const minPct = parseFloat(document.getElementById('min-required').value) || 75;
+      const pct = total ? (attended / total) * 100 : 0;
+      const statusEl = row.querySelector('.a-status');
+      const safeEl = row.querySelector('.a-safe');
+      statusEl.textContent = total ? pct.toFixed(1) + '%' : '--';
+      statusEl.className = 'pill a-status ' + (pct >= minPct ? 'pill-mint' : 'pill-coral');
+
+      if (!total) { safeEl.textContent = '--'; }
+      else if (pct >= minPct) {
+        const safe = calcSafeToMiss(attended, total, minPct);
+        safeEl.textContent = safe > 0 ? `${safe} classes` : '0 classes';
+        safeEl.style.color = 'var(--mint)';
+      } else {
+        const need = classesNeededToRecover(attended, total, minPct);
+        safeEl.textContent = `Attend ${need} more`;
+        safeEl.style.color = 'var(--coral)';
+      }
+      saveAll();
+      updateOverview();
+    }
+    row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', update));
+    row.querySelector('.remove-row').addEventListener('click', () => { row.remove(); saveAll(); updateOverview(); });
+    rowsContainer.appendChild(row);
+    update();
+  }
+
+  document.getElementById('min-required').addEventListener('input', () => {
+    rowsContainer.querySelectorAll('.subj-card').forEach(row => row.querySelector('.a-attended').dispatchEvent(new Event('input')));
+  });
+
+  document.getElementById('add-attendance-row').addEventListener('click', () => renderRow());
+
+  function saveAll() {
+    const data = [];
+    rowsContainer.querySelectorAll('.subj-card').forEach(row => {
+      data.push({
+        name: row.querySelector('.a-name').value,
+        attended: row.querySelector('.a-attended').value,
+        total: row.querySelector('.a-total').value
+      });
+    });
+    StudentHubStore.set('attendance_subjects', data);
+  }
+
+  function updateOverview() {
+    const data = StudentHubStore.get('attendance_subjects', []);
+    let totalAttended = 0, totalClasses = 0, atRisk = 0;
+    const minPct = parseFloat(document.getElementById('min-required').value) || 75;
+    data.forEach(s => {
+      const a = Number(s.attended) || 0, t = Number(s.total) || 0;
+      totalAttended += a; totalClasses += t;
+      if (t && (a / t) * 100 < minPct) atRisk++;
+    });
+    document.getElementById('overall-pct').textContent = totalClasses ? Math.round((totalAttended / totalClasses) * 100) + '%' : '0%';
+    document.getElementById('subject-count').textContent = data.length;
+    document.getElementById('at-risk-count').textContent = atRisk;
+  }
+
+  // Load saved data or seed with 3 blank rows
+  const saved = StudentHubStore.get('attendance_subjects', []);
+  if (saved.length) {
+    saved.forEach(renderRow);
+  } else {
+    for (let i = 0; i < 3; i++) renderRow();
+  }
+  updateOverview();
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Planner — Student Hub</title>
+<meta name="description" content="Plan study tasks by subject, due date and priority, and track your weekly completion progress.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%235B6CFF%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .task-item { display: grid; grid-template-columns: 24px 1.6fr 1fr 0.8fr 36px; gap: 14px; align-items: center; padding: 13px 14px; border-radius: var(--radius-sm); background: var(--panel-2); margin-bottom: 8px; }
+  .task-item.done { opacity: 0.5; }
+  .task-item.done .t-title { text-decoration: line-through; }
+  .task-check { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--line); cursor: pointer; display:flex; align-items:center; justify-content:center; background:var(--ink-soft); }
+  .task-check.checked { background: var(--mint); border-color: var(--mint); }
+  .task-check svg { width: 13px; height: 13px; color: var(--ink); display:none; }
+  .task-check.checked svg { display:block; }
+  @media (max-width: 760px) { .task-item { grid-template-columns: 24px 1fr 36px; } .t-meta { display:none; } }
+</style>
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 7.5v6c0 1 4 3.5 9 3.5s9-2.5 9-3.5v-6"/></svg></div>
+      <div class="brand-name">Student Hub<span>Engineering &amp; Polytechnic</span></div>
+    </div>
+    <nav>
+      <div class="nav-group-label">Overview</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Tools</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="gpa-calculator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>GPA Calculator</a></li>
+        <li><a class="nav-link" href="attendance-tracker.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Attendance Tracker</a></li>
+        <li><a class="nav-link" href="study-planner.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Study Planner</a></li>
+        <li><a class="nav-link" href="notes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Notes</a></li>
+        <li><a class="nav-link" href="timetable-generator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M9 4v18M15 4v18"/></svg>Timetable Generator</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <div class="nav-group-label">Learn</div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="resources.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Video Library</a></li>
+        <li><a class="nav-link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About &amp; Help</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="about.html">How this works &rarr;</a>
+      <span>&copy; 2026 Student Hub</span>
+    </div>
+  </aside>
+
+  <div>
+    <div class="mobile-topbar">
+      <button class="menu-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+      <div class="brand-name" style="font-size:0.95rem;">Student Hub</div>
+      <div style="width:38px;"></div>
+    </div>
+
+    <main class="main-content">
+
+      <section class="page-head fade-up">
+        <div>
+          <span class="eyebrow">Planning Tool</span>
+          <h1>Study Planner</h1>
+          <p>Break revision and assignments into small tasks tied to a subject, due date, and priority. Check tasks off as you go — your weekly completion ring updates live and syncs with your dashboard.</p>
+        </div>
+        <div class="ring-wrap">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50" stroke-width="10"/>
+            <circle id="progress-ring" class="ring-fg" cx="60" cy="60" r="50" stroke-width="10" stroke="#FFB648" stroke-dasharray="314" stroke-dashoffset="314"/>
+          </svg>
+          <div class="ring-label">
+            <span class="val mono" id="progress-display" style="font-size:1.6rem;">0%</span>
+            <span class="sub">Complete</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="card">
+        <h3 style="margin-bottom:16px;">Add a task</h3>
+        <div class="field-row">
+          <div class="field" style="margin-bottom:0;">
+            <label for="task-title">Task</label>
+            <input type="text" id="task-title" placeholder="e.g. Revise Chapter 4 — Thermodynamics">
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label for="task-subject">Subject</label>
+            <input type="text" id="task-subject" placeholder="e.g. Mechanical Engineering">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field" style="margin-bottom:0;">
+            <label for="task-due">Due date</label>
+            <input type="date" id="task-due">
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="add-task-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add task
+        </button>
+      </div>
+
+      <div class="section-head">
+        <h2>Your tasks</h2>
+        <div style="display:flex; gap:8px;">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="pending">Pending</button>
+          <button class="chip" data-filter="done">Done</button>
+        </div>
+      </div>
+
+      <div id="task-list"></div>
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <p>No tasks here yet. Add your first study task above.</p>
+      </div>
+
+      <div class="section-head"><h2>Planning tips</h2></div>
+      <div class="grid grid-2">
+        <div class="card card-sm">
+          <h3 style="font-size:0.95rem; margin-bottom:8px;">The Pomodoro approach</h3>
+          <p style="font-size:0.85rem; color:var(--text-dim); line-height:1.6;">Break each task into 25-minute focus blocks with 5-minute breaks. It works especially well for dense subjects like circuit theory or DSA where focus tends to fade fast.</p>
+        </div>
+        <a class="video-card" href="https://www.youtube.com/results?search_query=pomodoro+technique+for+engineering+students" target="_blank" rel="noopener">
+          <div class="video-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div>
+            <div class="vtitle">Pomodoro technique for students</div>
+            <div class="vchannel">Search on YouTube &rarr;</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="page-footer">
+        <span>Study Planner — part of Student Hub.</span>
+        <a href="notes.html" style="color:var(--indigo);">Next: write your notes &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script>
+  let tasks = StudentHubStore.get('planner_tasks', []);
+  let currentFilter = 'all';
+  const listEl = document.getElementById('task-list');
+  const emptyEl = document.getElementById('empty-state');
+
+  const priorityPill = { high: 'pill-coral', medium: 'pill-amber', low: 'pill-mint' };
+
+  function save() { StudentHubStore.set('planner_tasks', tasks); }
+
+  function render() {
+    listEl.innerHTML = '';
+    const filtered = tasks.filter(t => currentFilter === 'all' ? true : currentFilter === 'done' ? t.done : !t.done);
+
+    if (!filtered.length) {
+      emptyEl.style.display = 'block';
+    } else {
+      emptyEl.style.display = 'none';
+      filtered.forEach((task) => {
+        const realIndex = tasks.indexOf(task);
+        const item = document.createElement('div');
+        item.className = 'task-item' + (task.done ? ' done' : '');
+        item.innerHTML = `
+          <div class="task-check ${task.done ? 'checked' : ''}" data-i="${realIndex}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <div class="t-title" style="font-size:0.9rem; font-weight:500;">${escapeHtml(task.title)}</div>
+            <div class="t-meta" style="font-size:0.76rem; color:var(--text-faint); margin-top:3px;">${escapeHtml(task.subject || 'General')} ${task.due ? '• Due ' + task.due : ''}</div>
+          </div>
+          <span class="pill ${priorityPill[task.priority] || 'pill-indigo'}" style="justify-self:start;">${task.priority}</span>
+          <button class="btn-icon remove-task" data-i="${realIndex}" aria-label="Delete task" style="color:var(--coral); background:rgba(255,107,107,0.12); border-color:rgba(255,107,107,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    listEl.querySelectorAll('.task-check').forEach(box => {
+      box.addEventListener('click', () => {
+        const i = parseInt(box.dataset.i);
+        tasks[i].done = !tasks[i].done;
+        save(); render(); updateProgress();
+      });
+    });
+    listEl.querySelectorAll('.remove-task').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        tasks.splice(i, 1);
+        save(); render(); updateProgress();
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function updateProgress() {
+    const total = tasks.length;
+    const done = tasks.filter(t => t.done).length;
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const ring = document.getElementById('progress-ring');
+    const circumference = 314;
+    ring.setAttribute('stroke-dashoffset', circumference - (circumference * pct / 100));
+    document.getElementById('progress-display').textContent = pct + '%';
+  }
+
+  document.getElementById('add-task-btn').addEventListener('click', () => {
+    const title = document.getElementById('task-title').value.trim();
+    if (!title) { alert('Please enter a task title.'); return; }
+    const subject = document.getElementById('task-subject').value.trim();
+    const due = document.getElementById('task-due').value;
+    const priority = document.getElementById('task-priority').value;
+    tasks.push({ title, subject, due, priority, done: false });
+    save(); render(); updateProgress();
+    document.getElementById('task-title').value = '';
+    document.getElementById('task-subject').value = '';
+    document.getElementById('task-due').value = '';
+  });
+
+  document.querySelectorAll('.chip[data-filter]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip[data-filter]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter;
+      render();
+    });
+  });
+
+  render();
+  updateProgress();
+</script>
+</body>
+</html>
